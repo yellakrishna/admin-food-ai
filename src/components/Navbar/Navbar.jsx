@@ -9,7 +9,7 @@ const Navbar = () => {
       {/* Left: Logo + Title */}
       <div className="navbar-left">
         <img className="navbar-logo" src={fish} alt="Fish Delivery" />
-        <h1 className="navbar-title">Fish Delivery</h1>
+        <h1 className="navbar-title">Admin Panel</h1>
       </div>
 
       {/* Right: Profile */}
