@@ -20,6 +20,7 @@
   background: #fff;
   border-radius: 10px;
   overflow-x: auto;
+    display: block;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
@@ -93,7 +94,7 @@
   }
 
   .mobile-list {
-    display: flex;
+    display: block;
     flex-direction: column;
     gap: 15px;
   }
