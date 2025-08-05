@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "../../assets/assets";
+import "./Menu.css";
 
 const Menu = () => {
   const [foods, setFoods] = useState([]);
@@ -21,24 +22,19 @@ const Menu = () => {
   }, []);
 
   return (
-    <div className="menu">
+    <div className="menu-container">
       {foods.map((food) => (
         <div key={food._id} className="food-card">
-          {/* ✅ Cloudinary URL works directly */}
           <img
-  src={food.image}
-  alt={food.name}
-  style={{
-    width: "100%",
-    height: "200px",
-    objectFit: "cover",
-    borderRadius: "10px"
-  }}
-/>
-
-          <h3>{food.name}</h3>
-          <p>{food.description}</p>
-          <span>₹{food.price}</span>
+            src={food.image}
+            alt={food.name}
+            className="food-image"
+          />
+          <div className="food-details">
+            <h3>{food.name}</h3>
+            <p className="food-description">{food.description}</p>
+            <span className="food-price">₹{food.price}</span>
+          </div>
         </div>
       ))}
     </div>

@@ -15,6 +15,7 @@ import Menu from './pages/Menu/Menu'
 
 const App = () => {
   return (
+    
     <div className='app'>
       <ToastContainer/>
       <Navbar/>

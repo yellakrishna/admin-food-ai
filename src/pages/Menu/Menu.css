@@ -1,0 +1,60 @@
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index:-1;
+  padding-top: 80px;
+}
+
+.food-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.food-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.food-details {
+  text-align: center;
+}
+
+.food-details h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.food-description {
+  font-size: 0.85rem;
+  color: #666;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.food-price {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #007bff;
+}

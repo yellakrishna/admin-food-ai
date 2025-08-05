@@ -82,6 +82,7 @@ const Add = () => {
   };
 
   return (
+    <div className="page-content">
     <div className="add">
       <form className="flex-col" onSubmit={onSubmitHandler}>
         {/* Image Upload */}
@@ -169,6 +170,7 @@ const Add = () => {
           {loading ? "Adding..." : "ADD"}
         </button>
       </form>
+    </div>
     </div>
   );
 };

@@ -42,57 +42,68 @@ const List = () => {
   }, []);
 
   return (
+        <div className="page-content">
     <div className="food-list">
-      <h2>Food Items</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price (₹)</th>
-            <th>Description</th>
-            <th>Action</th> {/* New column */}
-          </tr>
-        </thead>
-        <tbody>
-          {foods.map((item) => (
-            <tr key={item._id}>
-              <td>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    objectFit: "cover",
-                    borderRadius: "4px"
-                  }}
-                />
-              </td>
-              <td>{item.name}</td>
-              <td>{item.category}</td>
-              <td>{item.price}</td>
-              <td>{item.description}</td>
-              <td>
-                <button
-                  onClick={() => removeFood(item._id)}
-                  style={{
-                    background: "red",
-                    color: "white",
-                    border: "none",
-                    padding: "5px 10px",
-                    cursor: "pointer",
-                    borderRadius: "4px"
-                  }}
-                >
-                  Remove
-                </button>
-              </td>
+      <h2 className="list-title">Food Items</h2>
+
+      {/* Table View for PC */}
+      <div className="table-container">
+        <table className="food-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price (₹)</th>
+              <th>Description</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {foods.map((item) => (
+              <tr key={item._id}>
+                <td>
+                  <img src={item.image} alt={item.name} />
+                </td>
+                <td>{item.name}</td>
+                <td>{item.category}</td>
+                <td>{item.price}</td>
+                <td>{item.description}</td>
+                <td>
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeFood(item._id)}
+                  >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile List View */}
+      <div className="mobile-list">
+        {foods.map((item) => (
+          <div className="mobile-item" key={item._id}>
+            <img src={item.image} alt={item.name} />
+            <div className="mobile-info">
+              <h3>{item.name}</h3>
+              <p className="category">{item.category}</p>
+              <p className="price">₹{item.price}</p>
+              <p className="desc">{item.description}</p>
+            </div>
+            <button
+              className="remove-btn"
+              onClick={() => removeFood(item._id)}
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
     </div>
   );
 };

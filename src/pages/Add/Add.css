@@ -33,3 +33,47 @@
     color: white;
     cursor: pointer;
 }
+
+
+@media (max-width: 768px) {
+    .add{
+        width: 90%;
+        margin-left: 5vw;
+    }
+    .add-img-upload img{
+        width: 100px;
+    }
+    .add-product-name, .add-product-description{
+        width: 100%;
+    }
+    .add-category-price{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .add-category-price select, .add-category-price input{
+        max-width: 100%;
+    }
+    /* Limit dropdown height and enable scrolling */
+.add-category select {
+  max-height: 150px; /* Limit height */
+  overflow-y: auto; /* Enable vertical scroll */
+
+}
+
+
+/* Optional: Style select for better look */
+.add-category select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: white;
+  
+}
+
+.add-category option {
+  padding: 8px;
+  
+}
+
+}

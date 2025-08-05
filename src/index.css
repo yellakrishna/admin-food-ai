@@ -29,3 +29,26 @@ hr{
 .cursor{
   cursor: pointer;
 }
+
+/* Default desktop layout */
+.page-content {
+  margin-left: 240px; /* same as sidebar width */
+  padding: 1rem;
+  width: calc(100% - 240px);
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .page-content {
+    margin-left: 70px; /* small icon-only sidebar */
+    width: calc(100% - 70px);
+  }
+}
+
+
+/* Push all content below the fixed navbar */
+.main-content {
+  padding-top: 80px; /* height of navbar + small gap */
+}
