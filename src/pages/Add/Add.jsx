@@ -133,23 +133,32 @@ const Add = () => {
         {/* Category & Price */}
         <div className="add-category-price">
           {/* Category */}
-          <div className="add-category flex-col">
-            <p>Product category</p>
-            <select
-              name="category"
-              onChange={onChangeHandler}
-              value={data.category}
-            >
-              <option value="Boccha">Boccha</option>
-              <option value="Dhu Bocha">Dhu Bocha</option>
-              <option value="Rovu">Rovu</option>
-              <option value="Valuga">Valuga</option>
-              <option value="Murgam">Murgam</option>
-              <option value="Matta">Matta</option>
-              <option value="Nar Jalla">Nar Jalla</option>
-              <option value="Royya">Royya</option>
-            </select>
-          </div>
+          {/* Category */}
+<div className="add-category flex-col">
+  <p>Product category</p>
+  <select
+    name="category"
+    onChange={onChangeHandler}
+    value={data.category}
+  >
+    <option value="Vegetarian">Vegetarian</option>
+    <option value="Non-Vegetarian">Non-Vegetarian</option>
+    <option value="Fast Food">Fast Food</option>
+    <option value="Seafood">Seafood</option>
+    <option value="Salads">Salads</option>
+    <option value="Soups">Soups</option>
+    <option value="Pasta">Pasta</option>
+    <option value="Pizza">Pizza</option>
+    <option value="Grilled">Grilled</option>
+    <option value="Beverages">Beverages</option>
+    <option value="Desserts">Desserts</option>
+    <option value="Sandwiches">Sandwiches</option>
+    <option value="Burgers">Burgers</option>
+    <option value="BBQ">BBQ</option>
+    <option value="Breakfast">Breakfast</option>
+  </select>
+</div>
+
 
           {/* Price */}
           <div className="add-price flex-col">

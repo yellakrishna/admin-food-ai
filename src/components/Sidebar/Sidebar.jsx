@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import { assets } from "../../assets/assets";
 import { NavLink } from "react-router-dom";
 import logo from "/logo-design.jpg";
+import food from "/veg.png";
 
 const Sidebar = () => {
   return (
@@ -45,7 +46,7 @@ const Sidebar = () => {
             isActive ? "sidebar-option active" : "sidebar-option"
           }
         >
-          <img src={logo} alt="Orders" className="fishs" />
+          <img src={food} alt="Orders" className="fishs" />
           <span>Menu</span>
         </NavLink>
       </nav>

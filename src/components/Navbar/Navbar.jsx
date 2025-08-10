@@ -1,14 +1,15 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "/logo-design.jpg";
-import fish from "/beautiful-fish.jpg";
+import food from "/veg.png";
+
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       {/* Left: Logo + Title */}
       <div className="navbar-left">
-        <img className="navbar-logo" src={fish} alt="Fish Delivery" />
+        <img className="navbar-logo" src={food} alt="Fish Delivery" />
         <h1 className="navbar-title">Admin Panel</h1>
       </div>
 
