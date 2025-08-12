@@ -7,25 +7,7 @@ import logo from "/logo-design.jpg";
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
-
-  // 📌 Fetch all orders
-  const fetchAllOrders = async () => {
-    try {
-      const response = await axios.get(`${url}/api/order/list`);
-      if (response.data.success) {
-        // Sort by latest first
-        const sortedOrders = response.data.data.sort(
-          (a, b) => new Date(b.createdAt || getDateFromObjectId(b._id)) - new Date(a.createdAt || getDateFromObjectId(a._id))
-        );
-        setOrders(sortedOrders);
-      } else {
-        toast.error("Error fetching orders");
-      }
-    } catch (err) {
-      console.error("Fetch Orders Error:", err);
-      toast.error("Server Error");
-    }
-  };
+  const [loading, setLoading] = useState(true); // ✅ Loading state
 
   // 📌 Extract timestamp from MongoDB ObjectId (for old orders without createdAt)
   const getDateFromObjectId = (objectId) => {
@@ -50,6 +32,30 @@ const Order = () => {
       hour: "2-digit",
       minute: "2-digit",
     });
+  };
+
+  // 📌 Fetch all orders
+  const fetchAllOrders = async () => {
+    try {
+      setLoading(true); // ✅ Show loader
+      const response = await axios.get(`${url}/api/order/list`);
+      if (response.data.success) {
+        // Sort by latest first
+        const sortedOrders = response.data.data.sort(
+          (a, b) =>
+            new Date(b.createdAt || getDateFromObjectId(b._id)) -
+            new Date(a.createdAt || getDateFromObjectId(a._id))
+        );
+        setOrders(sortedOrders);
+      } else {
+        toast.error("Error fetching orders");
+      }
+    } catch (err) {
+      console.error("Fetch Orders Error:", err);
+      toast.error("Server Error");
+    } finally {
+      setLoading(false); // ✅ Hide loader
+    }
   };
 
   // 📌 Update order status
@@ -81,11 +87,16 @@ const Order = () => {
       <div className="order-page">
         <h3 className="page-title">📦 Orders</h3>
 
-        <div className="order-list">
-          {orders.length === 0 ? (
-            <p>No orders found.</p>
-          ) : (
-            orders.map((order, index) => (
+        {loading ? (
+          <div className="orders-loading">
+            <div className="spinner"></div>
+            <p>Loading orders...</p>
+          </div>
+        ) : orders.length === 0 ? (
+          <p>No orders found.</p>
+        ) : (
+          <div className="order-list">
+            {orders.map((order, index) => (
               <div key={index} className="order-card">
                 {/* Order Header */}
                 <div className="order-header">
@@ -154,9 +165,9 @@ const Order = () => {
                   </select>
                 </div>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

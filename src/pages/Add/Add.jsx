@@ -9,7 +9,7 @@ const Add = () => {
     name: "",
     description: "",
     price: "",
-    category: "Boccha"
+    category: "Vegetarian"
   });
 
   const [image, setImage] = useState(null);
@@ -83,103 +83,108 @@ const Add = () => {
 
   return (
     <div className="page-content">
-    <div className="add">
-      <form className="flex-col" onSubmit={onSubmitHandler}>
-        {/* Image Upload */}
-        <div className="add-img-upload flex-col">
-          <p>Upload image</p>
-          <label htmlFor="image">
-            <img
-              src={image ? URL.createObjectURL(image) : assets.upload_area}
-              alt="Preview"
-            />
-          </label>
-          <input
-            onChange={(e) => setImage(e.target.files[0])}
-            type="file"
-            id="image"
-            hidden
-            accept="image/*"
-            required
-          />
-        </div>
-
-        {/* Product Name */}
-        <div className="add-product-name flex-col">
-          <p>Product name</p>
-          <input
-            name="name"
-            onChange={onChangeHandler}
-            value={data.name}
-            type="text"
-            placeholder="Type here"
-            required
-          />
-        </div>
-
-        {/* Product Description */}
-        <div className="add-product-description flex-col">
-          <p>Product description</p>
-          <textarea
-            name="description"
-            onChange={onChangeHandler}
-            value={data.description}
-            rows={6}
-            placeholder="Write content here"
-            required
-          />
-        </div>
-
-        {/* Category & Price */}
-        <div className="add-category-price">
-          {/* Category */}
-          {/* Category */}
-<div className="add-category flex-col">
-  <p>Product category</p>
-  <select
-    name="category"
-    onChange={onChangeHandler}
-    value={data.category}
-  >
-    <option value="Vegetarian">Vegetarian</option>
-    <option value="Non-Vegetarian">Non-Vegetarian</option>
-    <option value="Fast Food">Fast Food</option>
-    <option value="Seafood">Seafood</option>
-    <option value="Salads">Salads</option>
-    <option value="Soups">Soups</option>
-    <option value="Pasta">Pasta</option>
-    <option value="Pizza">Pizza</option>
-    <option value="Grilled">Grilled</option>
-    <option value="Beverages">Beverages</option>
-    <option value="Desserts">Desserts</option>
-    <option value="Sandwiches">Sandwiches</option>
-    <option value="Burgers">Burgers</option>
-    <option value="BBQ">BBQ</option>
-    <option value="Breakfast">Breakfast</option>
-  </select>
-</div>
-
-
-          {/* Price */}
-          <div className="add-price flex-col">
-            <p>Product Price</p>
+      <div className="add">
+        <form className="flex-col" onSubmit={onSubmitHandler}>
+          {/* Image Upload */}
+          <div className="add-img-upload flex-col">
+            <p>Upload image</p>
+            <label htmlFor="image">
+              <img
+                src={image ? URL.createObjectURL(image) : assets.upload_area}
+                alt="Preview"
+              />
+            </label>
             <input
-              type="number"
-              name="price"
-              onChange={onChangeHandler}
-              value={data.price}
-              placeholder="₹25"
+              onChange={(e) => setImage(e.target.files[0])}
+              type="file"
+              id="image"
+              hidden
+              accept="image/*"
               required
             />
           </div>
-        </div>
 
-        {/* Submit Button */}
-        <button type="submit" className="add-btn" disabled={loading}>
-          {loading ? "Adding..." : "ADD"}
-        </button>
-      </form>
-    </div>
+          {/* Product Name */}
+          <div className="add-product-name flex-col">
+            <p>Product name</p>
+            <input
+              name="name"
+              onChange={onChangeHandler}
+              value={data.name}
+              type="text"
+              placeholder="Type here"
+              required
+            />
+          </div>
+
+          {/* Product Description */}
+          <div className="add-product-description flex-col">
+            <p>Product description</p>
+            <textarea
+              name="description"
+              onChange={onChangeHandler}
+              value={data.description}
+              rows={6}
+              placeholder="Write content here"
+              required
+            />
+          </div>
+
+          {/* Category & Price */}
+          <div className="add-category-price">
+            {/* Category */}
+            <div className="add-category flex-col">
+              <p>Product category</p>
+              <select
+                name="category"
+                onChange={onChangeHandler}
+                value={data.category}
+              >
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Non-Vegetarian">Non-Vegetarian</option>
+                <option value="Fast Food">Fast Food</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Salads">Salads</option>
+                <option value="Soups">Soups</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Grilled">Grilled</option>
+                <option value="Beverages">Beverages</option>
+                <option value="Desserts">Desserts</option>
+                <option value="Sandwiches">Sandwiches</option>
+                <option value="Burgers">Burgers</option>
+                <option value="BBQ">BBQ</option>
+                <option value="Breakfast">Breakfast</option>
+              </select>
+            </div>
+
+            {/* Price */}
+            <div className="add-price flex-col">
+              <p>Product Price</p>
+              <input
+                type="number"
+                name="price"
+                onChange={onChangeHandler}
+                value={data.price}
+                placeholder="₹25"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button type="submit" className="add-btn" disabled={loading}>
+            {loading ? (
+              <>
+                <div className="spinner"></div>
+                Adding...
+              </>
+            ) : (
+              "ADD"
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
