@@ -9,7 +9,7 @@ const Add = () => {
     name: "",
     description: "",
     price: "",
-    category: "Vegetarian" // ✅ default matches the select options
+    category: "Vegetarian"
   });
 
   const [image, setImage] = useState(null);
@@ -60,7 +60,7 @@ const Add = () => {
           name: "",
           description: "",
           price: "",
-          category: "Vegetarian" // ✅ reset default
+          category: "Boccha"
         });
         setImage(null);
         document.getElementById("image").value = "";
