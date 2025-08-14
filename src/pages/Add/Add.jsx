@@ -9,7 +9,7 @@ const Add = () => {
     name: "",
     description: "",
     price: "",
-    category: "Vegetarian"
+    category: "Vegetarian", // ✅ Default matches option value
   });
 
   const [image, setImage] = useState(null);
@@ -20,22 +20,12 @@ const Add = () => {
     event.preventDefault();
 
     // Client-side validations
-    if (!image) {
-      toast.error("Please select an image");
-      return;
-    }
-    if (!data.name.trim()) {
-      toast.error("Please enter a product name");
-      return;
-    }
-    if (!data.description.trim()) {
-      toast.error("Please enter a description");
-      return;
-    }
-    if (!data.price || Number(data.price) <= 0) {
-      toast.error("Please enter a valid price");
-      return;
-    }
+    if (!image) return toast.error("Please select an image");
+    if (!data.name.trim()) return toast.error("Please enter a product name");
+    if (!data.description.trim())
+      return toast.error("Please enter a description");
+    if (!data.price || Number(data.price) <= 0)
+      return toast.error("Please enter a valid price");
 
     try {
       setLoading(true);
@@ -49,20 +39,19 @@ const Add = () => {
 
       // API call
       const response = await axios.post(`${url}/api/food/add`, formData, {
-        headers: { "Content-Type": "multipart/form-data" }
+        headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (response.data.success) {
         toast.success(response.data.message || "Food Added Successfully");
 
         // Reset form
-       setData({
-  name: "",
-  description: "",
-  price: "",
-  category: "Vegetarian"
-});
-
+        setData({
+          name: "",
+          description: "",
+          price: "",
+          category: "Vegetarian", // ✅ Matches select
+        });
         setImage(null);
         document.getElementById("image").value = "";
       } else {
