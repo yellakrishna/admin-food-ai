@@ -56,12 +56,13 @@ const Add = () => {
         toast.success(response.data.message || "Food Added Successfully");
 
         // Reset form
-        setData({
-          name: "",
-          description: "",
-          price: "",
-          category: "Boccha"
-        });
+       setData({
+  name: "",
+  description: "",
+  price: "",
+  category: "Vegetarian"
+});
+
         setImage(null);
         document.getElementById("image").value = "";
       } else {
